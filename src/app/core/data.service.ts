@@ -22,7 +22,7 @@ export class DataService {
     return this.http.get<ICustomer[]>(this.baseUrl + 'customers.json').pipe(
       map((customers) => {
         let customer = customers.filter((cust: ICustomer) => cust.id === id);
-        return customer && customer.length ? customer[0] : null!;
+        return customer?.length ? customer[0] : null!;
       }),
       catchError(this.handleError)
     );
